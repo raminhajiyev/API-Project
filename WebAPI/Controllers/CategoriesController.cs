@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebAPI.Context;
+using WebAPI.DTOs.CategoryDTO;
 using WebAPI.Entities;
 
 namespace WebAPI.Controllers
@@ -10,16 +13,25 @@ namespace WebAPI.Controllers
     public class CategoriesController : ControllerBase
     {
         private readonly Context.ApiContext _context;
+        private readonly IMapper _mapper;
 
-        public CategoriesController(ApiContext context)
+        public CategoriesController(ApiContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult CategoryList()
         {
-            var values = _context.Categories.ToList();
+            var values = _context.Categories.Include(x => x.Products).
+                Select(c => new CategoryResultDTO
+                {
+                    CategoryId = c.CategoryId,
+                    CategoryName = c.CategoryName,
+                    Products = c.Products
+                })
+                .ToList();
             return Ok(values);
         }
 
@@ -43,7 +55,13 @@ namespace WebAPI.Controllers
         [HttpGet("{id}")]
         public IActionResult GetCategory(int id)
         {
-            var value = _context.Categories.Find(id);
+            var value = _context.Categories
+                .Include(c => c.Products)
+                .FirstOrDefault(c => c.CategoryId == id);
+
+            if (value == null)
+                return NotFound();
+
             return Ok(value);
         }
 

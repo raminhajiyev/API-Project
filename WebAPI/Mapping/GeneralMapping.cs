@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using WebAPI.DTOs.CategoryDTO;
 using WebAPI.DTOs.FeatureDTO;
 using WebAPI.DTOs.MessageDTO;
+using WebAPI.DTOs.ProductDTO;
 using WebAPI.Entities;
 
 namespace WebAPI.Mapping
@@ -9,6 +11,9 @@ namespace WebAPI.Mapping
     {
         public GeneralMapping()
         {
+
+            CreateMap<Category, CategoryResultDTO>().ReverseMap();
+
             CreateMap<Feature, ResultFeatureDTO>().ReverseMap();
             CreateMap<Feature, CreateFeatureDTO>().ReverseMap();
             CreateMap<Feature, GetByIdFeatureDTO>().ReverseMap();
@@ -17,6 +22,9 @@ namespace WebAPI.Mapping
             CreateMap<Message, GetByIdMessageDTO>().ReverseMap();
             CreateMap<Message, CreateMessageDTO>().ReverseMap();
             CreateMap<Message, ResultMessageDTO>().ReverseMap();
+
+            CreateMap<Product, ProductResultWithCategoryDTO>().ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.CategoryName)).ReverseMap();
+            CreateMap<Product, CreateProductDTO>().ReverseMap();
 
         }
     }
