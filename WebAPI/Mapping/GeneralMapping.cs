@@ -4,6 +4,7 @@ using WebAPI.DTOs.FeatureDTO;
 using WebAPI.DTOs.MessageDTO;
 using WebAPI.DTOs.ProductDTO;
 using WebAPI.DTOs.ServiceDTO;
+using WebAPI.DTOs.TestimonialDTO;
 using WebAPI.Entities;
 
 namespace WebAPI.Mapping
@@ -28,6 +29,8 @@ namespace WebAPI.Mapping
             CreateMap<Product, CreateProductDTO>().ReverseMap();
 
             CreateMap<Service, ServiceResultDTO>().ReverseMap();
+
+            CreateMap<Testimonial, TestimonialResultDTO>().ReverseMap();
 
         }
     }
