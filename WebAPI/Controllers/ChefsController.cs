@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Context;
+using WebAPI.DTOs.ChefDTO;
 using WebAPI.Entities;
 
 namespace WebAPI.Controllers
@@ -11,23 +13,26 @@ namespace WebAPI.Controllers
     public class ChefsController : ControllerBase
     {
         private readonly Context.ApiContext _context;
+        private readonly IMapper _mapper;
 
-        public ChefsController(ApiContext context)
+        public ChefsController(ApiContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult ChefList()
         {
             var values = _context.Chefs.ToList();
-            return Ok(values);
+            return Ok(_mapper.Map<List<ChefResultDTO>>(values));
         }
 
         [HttpPost]
-        public IActionResult AddChef(Chef chef)
+        public IActionResult AddChef(ChefCreateDTO chefCreateDTO)
         {
-            _context.Chefs.Add(chef);
+            var chef = _mapper.Map<Chef>(chefCreateDTO);
+            var value =_context.Chefs.Add(chef);
             _context.SaveChanges();
             return Ok("Chef has been added successfully!");
         }

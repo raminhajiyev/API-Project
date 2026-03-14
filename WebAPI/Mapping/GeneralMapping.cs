@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using WebAPI.DTOs.CategoryDTO;
+using WebAPI.DTOs.ChefDTO;
+using WebAPI.DTOs.EventSlideDTO;
 using WebAPI.DTOs.FeatureDTO;
 using WebAPI.DTOs.MessageDTO;
 using WebAPI.DTOs.ProductDTO;
@@ -31,6 +33,12 @@ namespace WebAPI.Mapping
             CreateMap<Service, ServiceResultDTO>().ReverseMap();
 
             CreateMap<Testimonial, TestimonialResultDTO>().ReverseMap();
+
+            CreateMap<EventSlide, EventResultDTO>().ReverseMap();
+            CreateMap<EventSlide, CreateEventDTO>().ReverseMap();
+
+            CreateMap<Chef, ChefResultDTO>().ReverseMap();
+            CreateMap<Chef, ChefCreateDTO>().ReverseMap();
 
         }
     }
