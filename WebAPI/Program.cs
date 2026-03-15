@@ -1,6 +1,7 @@
 using FluentValidation;
 using System.Reflection;
 using WebAPI.Context;
+using WebAPI.DTOs.MessageDTO;
 using WebAPI.Entities;
 using WebAPI.ValidationRules;
 
@@ -8,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApiContext>();
 
-builder.Services.AddScoped<IValidator<Message>, MessageValidator>();
+builder.Services.AddScoped<IValidator<CreateMessageDTO>, MessageValidator>();
 builder.Services.AddAutoMapper(cfg => { }, Assembly.GetExecutingAssembly());
 
 builder.Services.AddControllers();

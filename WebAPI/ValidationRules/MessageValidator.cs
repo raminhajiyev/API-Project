@@ -1,9 +1,10 @@
 ﻿using FluentValidation;
+using WebAPI.DTOs.MessageDTO;
 using WebAPI.Entities;
 
 namespace WebAPI.ValidationRules
 {
-    public class MessageValidator : AbstractValidator<Message>
+    public class MessageValidator : AbstractValidator<CreateMessageDTO>
     {
         public MessageValidator()
         {

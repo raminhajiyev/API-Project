@@ -12,11 +12,11 @@ namespace WebAPI.Controllers
     [ApiController]
     public class MessagesController : ControllerBase
     {
-        private readonly IValidator<Message> _validator;
+        private readonly IValidator<CreateMessageDTO> _validator;
         private readonly ApiContext _context;
         private readonly IMapper _mapper;
 
-        public MessagesController(IValidator<Message> validator, ApiContext context, IMapper mapper)
+        public MessagesController(IValidator<CreateMessageDTO> validator, ApiContext context, IMapper mapper)
         {
             _validator = validator;
             _context = context;
@@ -38,14 +38,14 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateMessage(Message message)
+        public IActionResult CreateMessage(CreateMessageDTO createMessageDTO)
         {
-            var validationResult = _validator.Validate(message);
+            var validationResult = _validator.Validate(createMessageDTO);
             if (!validationResult.IsValid)
             {
                 return BadRequest(validationResult.Errors.Select(x=>x.ErrorMessage));
             }
-            _context.Messages.Add(message);
+            _context.Messages.Add(_mapper.Map<Message>(createMessageDTO));
             _context.SaveChanges();
             return Ok("Message has been created successfully!");
         }
@@ -61,6 +61,13 @@ namespace WebAPI.Controllers
             _context.Messages.Remove(value);
             _context.SaveChanges();
             return Ok("Message has been deleted successfully!");
+        }
+
+        [HttpGet("IsReadFalse")]
+        public IActionResult GetUnreadMessages()
+        {
+            var unreadMessages = _context.Messages.Where(m => m.IsRead == false).ToList();
+            return Ok(_mapper.Map<List<ResultMessageDTO>>(unreadMessages));
         }
          
 
