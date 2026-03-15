@@ -4,6 +4,7 @@ using WebAPI.DTOs.ChefDTO;
 using WebAPI.DTOs.EventSlideDTO;
 using WebAPI.DTOs.FeatureDTO;
 using WebAPI.DTOs.MessageDTO;
+using WebAPI.DTOs.NotificationDTO;
 using WebAPI.DTOs.ProductDTO;
 using WebAPI.DTOs.ServiceDTO;
 using WebAPI.DTOs.TestimonialDTO;
@@ -39,6 +40,9 @@ namespace WebAPI.Mapping
 
             CreateMap<Chef, ChefResultDTO>().ReverseMap();
             CreateMap<Chef, ChefCreateDTO>().ReverseMap();
+
+            CreateMap<Notification, NotificationResultDTO>().ReverseMap();
+            CreateMap<Notification, CreateNotificationDTO>().ReverseMap();
 
         }
     }

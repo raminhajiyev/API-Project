@@ -21,5 +21,6 @@ namespace WebAPI.Context
         public DbSet<Service> Services { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
         public DbSet<EventSlide> EventSlides { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
     }
 }
