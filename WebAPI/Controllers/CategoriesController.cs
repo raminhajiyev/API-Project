@@ -24,20 +24,28 @@ namespace WebAPI.Controllers
         [HttpGet]
         public IActionResult CategoryList()
         {
-            var values = _context.Categories.Include(x => x.Products).
-                Select(c => new CategoryResultDTO
-                {
-                    CategoryId = c.CategoryId,
-                    CategoryName = c.CategoryName,
-                    Products = c.Products
-                })
-                .ToList();
-            return Ok(values);
+            var values = _context.Categories.ToList();
+            return Ok(_mapper.Map<List<CategoryResultDTO>>(values));
         }
 
+        //[HttpGet("GetCategoryListWithProducts")]
+        //public IActionResult GetCategoryListWithProducts()
+        //{
+        //    var values = _context.Categories.Include(x => x.Products).
+        //        Select(c => new CategoryResultDTO
+        //        {
+        //            CategoryId = c.CategoryId,
+        //            CategoryName = c.CategoryName,
+        //            Products = c.Products
+        //        })
+        //        .ToList();
+        //    return Ok(values);
+        //}
+
         [HttpPost]
-        public IActionResult AddCategory(Category category)
+        public IActionResult AddCategory(CreateCategoryDTO createCategoryDTO)
         {
+            var category = _mapper.Map<Category>(createCategoryDTO);
             _context.Categories.Add(category);
             _context.SaveChanges();
             return Ok("Category has been added successfully!");

@@ -1,4 +1,4 @@
-﻿namespace WebApp.DTOs
+﻿namespace WebApp.DTOs.CategoryDTO
 {
     public class CategoryResultDTO
     {

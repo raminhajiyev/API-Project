@@ -18,6 +18,7 @@ namespace WebAPI.Mapping
         {
 
             CreateMap<Category, CategoryResultDTO>().ReverseMap();
+            CreateMap<Category, CreateCategoryDTO>().ReverseMap();
 
             CreateMap<Feature, ResultFeatureDTO>().ReverseMap();
             CreateMap<Feature, CreateFeatureDTO>().ReverseMap();

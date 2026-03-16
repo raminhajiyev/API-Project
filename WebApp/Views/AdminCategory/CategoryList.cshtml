@@ -1,0 +1,45 @@
+﻿@using WebApp.DTOs.CategoryDTO
+@model List<CategoryResultDTO>
+@{
+    ViewData["Title"] = "CategoryList";
+    Layout = "~/Views/AdminLayout/CategoryList.cshtml";
+}
+
+    <div class="section-body">
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Simple</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Category Name</th>
+                                    <th scope="col">Delete</th>
+                                    <th scope="col">Edit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <th scope="row">@item.CategoryId</th>
+                                        <td>@item.CategoryId</td>
+                                        <td><a href="/Category/CategoryDelete/@item.CategoryId/" class="btn btn-danger">Delete</a></td>
+                                        <td><a href="/Category/CategoryUpdate/@item.CategoryId/" class="btn btn-success">Edit</a></td>
+                                    </tr>
+                                }
+
+                        </table>
+                        <br/>
+                            <button class="btn btn-primary"><a href="/Category/CategoryAdd/" style="color: white;">Add Category</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
