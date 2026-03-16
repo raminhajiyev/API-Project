@@ -74,9 +74,10 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateCategory(Category category)
+        public IActionResult UpdateCategory(UpdateCategoryDTO updateCategoryDTO)
         {
-            var value = _context.Categories.Update(category);
+            var value = _mapper.Map<Category>(updateCategoryDTO);
+            _context.Categories.Update(value);
             _context.SaveChanges();
             return Ok("Category has been updated successfully!");
 

@@ -1,7 +1,9 @@
-﻿@using WebApp.DTOs.CategoryDTO
-@model List<CategoryResultDTO>
+﻿
+
+@using WebApp.DTOs.ProductDTO
+@model List<ResultProductWithCategoryDTO>
 @{
-    ViewData["Title"] = "CategoryList";
+    ViewData["Title"] = "ProductList";
     Layout = "~/Views/AdminLayout/Index.cshtml";
     var count = 0;
 }
@@ -19,7 +21,8 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Category Name</th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Price</th>
                                 <th scope="col">Delete</th>
                                 <th scope="col">Edit</th>
                             </tr>
@@ -32,18 +35,21 @@
                                 ++;
                                 <tr>
                                     <th scope="row">@count</th>
-                                    <td>@item.CategoryName</td>
-                                    <td><a href="/AdminCategory/DeleteCategory/@item.CategoryId/" class="btn btn-danger">Delete</a></td>
-                                    <td><a href="/AdminCategory/UpdateCategory/@item.CategoryId/" class="btn btn-success">Edit</a></td>
+                                    <td>@item.ProductName</td>
+                                    <td>@item.Price</td>
+                                    <td><a href="/AdminProduct/DeleteProduct/@item.ProductId/" class="btn btn-danger">Delete</a></td>
+                                    <td><a href="/AdminProduct/UpdateProduct/@item.ProductId/" class="btn btn-success">Edit</a></td>
                                 </tr>
                             }
 
                         </table>
                         <br />
-                        <a href="/AdminCategory/AddCategory/" style="color: white;" class="btn btn-primary">Add Category</a>
+                        <a href="/AdminProduct/AddProduct/" style="color: white;" class="btn btn-primary">Add Product</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 

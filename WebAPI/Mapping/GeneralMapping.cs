@@ -19,6 +19,7 @@ namespace WebAPI.Mapping
 
             CreateMap<Category, CategoryResultDTO>().ReverseMap();
             CreateMap<Category, CreateCategoryDTO>().ReverseMap();
+            CreateMap<Category, UpdateCategoryDTO>().ReverseMap();
 
             CreateMap<Feature, ResultFeatureDTO>().ReverseMap();
             CreateMap<Feature, CreateFeatureDTO>().ReverseMap();
@@ -31,6 +32,9 @@ namespace WebAPI.Mapping
 
             CreateMap<Product, ProductResultWithCategoryDTO>().ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.CategoryName)).ReverseMap();
             CreateMap<Product, CreateProductDTO>().ReverseMap();
+            CreateMap<Product, UpdateProductDTO>().ReverseMap();
+            CreateMap<Product, GetByIdProductDTO>().ReverseMap();
+            CreateMap<Product, ResultProductWithCategoryDTO>().ReverseMap();
 
             CreateMap<Service, ServiceResultDTO>().ReverseMap();
 

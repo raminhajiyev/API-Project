@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Context;
+using WebAPI.DTOs.CategoryDTO;
 using WebAPI.DTOs.ProductDTO;
+using WebAPI.Entities;
 
 namespace WebAPI.Controllers
 {
@@ -35,5 +37,34 @@ namespace WebAPI.Controllers
             _context.SaveChanges();
             return Ok("Product has been added successfully!");
         }
-    }
-}
+
+        [HttpDelete]
+        public IActionResult DeleteProduct(int id)
+        {
+            var value = _context.Products.Find(id);
+            _context.Products.Remove(value);
+            _context.SaveChanges();
+            return Ok("Product has been deleted successfully!");
+        }
+
+        [HttpGet("GetProductWithCategory")]
+        public IActionResult GetProductWithCategory() {
+            var value = _context.Products.Include(x => x.Category).ToList();
+            return Ok(_mapper.Map<List<ProductResultWithCategoryDTO>>(value));
+        }
+        [HttpGet("GetProduct")]
+        public IActionResult GetProduct(int id)
+        {
+            return Ok(_mapper.Map<GetByIdProductDTO>(_context.Products.Find(id)));
+        }
+
+        [HttpPut]
+        public IActionResult UpdateProduct(UpdateProductDTO updateProductDTO)
+        {
+
+            var value = _mapper.Map<Product>(updateProductDTO);
+            _context.Products.Update(value);
+            _context.SaveChanges();
+            return Ok("Product has been updated successfully!");
+        }
+    } }
