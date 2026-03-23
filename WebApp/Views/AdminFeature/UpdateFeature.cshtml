@@ -1,9 +1,7 @@
-﻿@using WebApp.DTOs.ProductDTO
-@using Microsoft.AspNetCore.Mvc.Rendering
-@model UpdateProductDTO
-
+﻿@using WebApp.DTOs.FeatureDTO
+@model UpdateFeatureDTO
 @{
-    ViewData["Title"] = "UpdateProduct";
+    ViewData["Title"] = "AddFeature";
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
@@ -12,75 +10,82 @@
         <div class="card">
 
             <div class="card-header">
-                <h4>Update Product</h4>
+                <h4>Update Feature</h4>
             </div>
 
             <form method="post">
+
                 <div class="card-body">
 
-                    <input type="hidden" asp-for="ProductId" />
+                    <input type="hidden" asp-for="FeatureId" />
 
                     <div class="form-group row mb-4">
                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">
-                            Product Name
+                            Title
                         </label>
+
                         <div class="col-sm-12 col-md-7">
-                            <input type="text" class="form-control" asp-for="ProductName" />
+                            <input type="text" class="form-control" asp-for="Title" />
                         </div>
                     </div>
+
 
                     <div class="form-group row mb-4">
                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">
-                            Price
+                            Subtitle
                         </label>
+
                         <div class="col-sm-12 col-md-7">
-                            <input type="text" class="form-control" asp-for="Price" />
+                            <input type="text" class="form-control" asp-for="Subtitle" />
                         </div>
                     </div>
 
-                    <div class="form-group row mb-4">
-                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">
-                            Image URL
-                        </label>
-                        <div class="col-sm-12 col-md-7">
-                            <input type="text" class="form-control" asp-for="ImageURL" />
-                        </div>
-                    </div>
-
-                    <div class="form-group row mb-4">
-                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">
-                            Category
-                        </label>
-                        <div class="col-sm-12 col-md-7">
-                               <select asp-for="CategoryId" class="form-control">
-                                <option value="">--Category--</option>
-                                @foreach (var item in (List<SelectListItem>)ViewBag.v)
-                                {
-                                    <option value="@item.Value">@item.Text</option>
-                                }
-                            </select>
-                        </div>
-                    </div>
-
+                    
                     <div class="form-group row mb-4">
                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">
                             Description
                         </label>
                         <div class="col-sm-12 col-md-7">
-                            <textarea class="form-control" asp-for="ProductDescription"></textarea>
+                            <input type="text" class="form-control" asp-for="Description" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group row mb-4">
+                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">
+                            ImageURL
+                        </label>
+
+                        <div class="col-sm-12 col-md-7">
+                            <textarea class="form-control" asp-for="ImageURL"></textarea>
                         </div>
                     </div>
 
                     <div class="form-group row mb-4">
+                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">
+                            VideoURL
+                        </label>
+
+                        <div class="col-sm-12 col-md-7">
+                            <textarea class="form-control" asp-for="VideoURL"></textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row mb-4">
                         <label class="col-form-label col-12 col-md-3 col-lg-3"></label>
+
                         <div class="col-sm-12 col-md-7">
                             <button class="btn btn-primary">Save</button>
                         </div>
                     </div>
 
                 </div>
+
             </form>
 
         </div>
     </div>
 </div>
+

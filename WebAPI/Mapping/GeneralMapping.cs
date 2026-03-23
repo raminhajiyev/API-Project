@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using WebAPI.DTOs.AboutDTO;
 using WebAPI.DTOs.CategoryDTO;
 using WebAPI.DTOs.ChefDTO;
 using WebAPI.DTOs.EventSlideDTO;
@@ -48,6 +49,11 @@ namespace WebAPI.Mapping
 
             CreateMap<Notification, NotificationResultDTO>().ReverseMap();
             CreateMap<Notification, CreateNotificationDTO>().ReverseMap();
+
+            CreateMap<About, ResultAboutDTO>().ReverseMap();
+            CreateMap<About, UpdateAboutDTO>().ReverseMap();
+            CreateMap<About, CreateAboutDTO>().ReverseMap();
+            CreateMap<About, GetByIdAboutDTO>().ReverseMap();
 
         }
     }
