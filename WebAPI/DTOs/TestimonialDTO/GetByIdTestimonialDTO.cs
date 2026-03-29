@@ -1,6 +1,6 @@
-﻿namespace WebApp.DTOs
+﻿namespace WebAPI.DTOs.TestimonialDTO
 {
-    public class TestimonialResultDTO
+    public class GetByIdTestimonialDTO
     {
         public int TestimonialID { get; set; }
         public string Fullname { get; set; }

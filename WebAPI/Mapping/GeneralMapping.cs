@@ -7,6 +7,7 @@ using WebAPI.DTOs.FeatureDTO;
 using WebAPI.DTOs.MessageDTO;
 using WebAPI.DTOs.NotificationDTO;
 using WebAPI.DTOs.ProductDTO;
+using WebAPI.DTOs.ReservationDTO;
 using WebAPI.DTOs.ServiceDTO;
 using WebAPI.DTOs.TestimonialDTO;
 using WebAPI.Entities;
@@ -38,14 +39,23 @@ namespace WebAPI.Mapping
             CreateMap<Product, ResultProductWithCategoryDTO>().ReverseMap();
 
             CreateMap<Service, ServiceResultDTO>().ReverseMap();
+            CreateMap<Service, CreateServiceDTO>().ReverseMap();
+            CreateMap<Service, UpdateServiceDTO>().ReverseMap();
+            CreateMap<Service, GetByIdServiceDTO>().ReverseMap();
+
 
             CreateMap<Testimonial, TestimonialResultDTO>().ReverseMap();
+            CreateMap<Testimonial, UpdateTestimonialDTO>().ReverseMap();
+            CreateMap<Testimonial, GetByIdTestimonialDTO>().ReverseMap();
+            CreateMap<Testimonial, CreateTestimonialDTO>().ReverseMap();
 
             CreateMap<EventSlide, EventResultDTO>().ReverseMap();
             CreateMap<EventSlide, CreateEventDTO>().ReverseMap();
 
             CreateMap<Chef, ChefResultDTO>().ReverseMap();
             CreateMap<Chef, ChefCreateDTO>().ReverseMap();
+            CreateMap<Chef, UpdateChefDTO>().ReverseMap();
+            CreateMap<Chef, GetByIdChefDTO>().ReverseMap();
 
             CreateMap<Notification, NotificationResultDTO>().ReverseMap();
             CreateMap<Notification, CreateNotificationDTO>().ReverseMap();
@@ -54,6 +64,11 @@ namespace WebAPI.Mapping
             CreateMap<About, UpdateAboutDTO>().ReverseMap();
             CreateMap<About, CreateAboutDTO>().ReverseMap();
             CreateMap<About, GetByIdAboutDTO>().ReverseMap();
+
+            CreateMap<Reservation, ReservationResultDTO>().ReverseMap();
+            CreateMap<Reservation, UpdateReservationDTO>().ReverseMap();
+            CreateMap<Reservation, CreateReservationDTO>().ReverseMap();
+            CreateMap<Reservation, GetByIdReservationDTO>().ReverseMap();
 
         }
     }

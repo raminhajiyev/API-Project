@@ -1,6 +1,6 @@
-﻿namespace WebApp.DTOs
+﻿namespace WebAPI.DTOs.ServiceDTO
 {
-    public class ServiceResultDTO
+    public class GetByIdServiceDTO
     {
         public int ServiceId { get; set; }
         public string Title { get; set; }

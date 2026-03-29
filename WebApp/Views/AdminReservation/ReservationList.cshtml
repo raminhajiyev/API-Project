@@ -1,0 +1,58 @@
+﻿@using WebApp.DTOs.ReservationDTO
+@model List<ReservationResultDTO>
+
+@{
+    ViewData["Title"] = "ReservationList";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+
+
+<div class="section-body">
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Reservations</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Fullname</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Delete</th>
+                                <th scope="col">Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                count
+                                ++;
+                                <tr>
+                                    <th scope="row">@count</th>
+                                    <td>@item.Fullname</td>
+                                    <td>@item.Phone</td>
+                                    <td>@(item.ReservationDate.ToString("dd.MM.yyyy") ?? "-")</td>
+                                    <td><a href="/AdminReservation/DeleteReservation/@item.ReservationId/" class="btn btn-danger">Delete</a></td>
+                                    <td><a href="/AdminReservation/UpdateReservation/@item.ReservationId/" class="btn btn-success">Edit</a></td>
+                                </tr>
+                            }
+
+                        </table>
+                        <br />
+                        <a href="/AdminReservation/AddReservation/" style="color: white;" class="btn btn-primary">Add Reservation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+

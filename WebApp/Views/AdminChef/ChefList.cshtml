@@ -1,0 +1,53 @@
+﻿@using WebApp.DTOs.ChefDTO
+@model List<ChefResultDTO>
+@{
+    ViewData["Title"] = "ChefList";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count=0;
+}
+
+<div class="section-body">
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Chef</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Fullname</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Delete</th>
+                                <th scope="col">Edit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                count
+                                ++;
+                                <tr>
+                                    <th scope="row">@count</th>
+                                    <td>@item.Fullname</td>
+                                    <td>@item.Title</td>
+                                    <td>@item.Description</td>
+                                    <td><a href="/AdminChef/DeleteChef/@item.ChefId/" class="btn btn-danger">Delete</a></td>
+                                    <td><a href="/AdminChef/UpdateChef/@item.ChefId/" class="btn btn-success">Edit</a></td>
+                                </tr>
+                            }
+
+                        </table>
+                        <br />
+                        <a href="/AdminChef/AddChef/" style="color: white;" class="btn btn-primary">Add Chef</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

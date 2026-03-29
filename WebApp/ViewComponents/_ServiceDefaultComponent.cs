@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using WebApp.DTOs;
+using WebApp.DTOs.ServiceDTO;
 
 namespace WebApp.ViewComponents
 {

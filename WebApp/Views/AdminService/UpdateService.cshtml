@@ -1,0 +1,76 @@
+﻿@using WebApp.DTOs.ServiceDTO
+@model UpdateServiceDTO
+@{
+    ViewData["Title"] = "UpdateService";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+
+            <div class="card-header">
+                <h4>Update Service</h4>
+            </div>
+
+            <form method="post">
+
+                <div class="card-body">
+                    <input type="hidden" asp-for="ServiceId" />
+
+                    <div class="form-group row mb-4">
+                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">
+                            Title
+                        </label>
+
+                        <div class="col-sm-12 col-md-7">
+                            <input type="text" class="form-control" asp-for="Title" />
+                        </div>
+                    </div>
+
+                    
+                    <div class="form-group row mb-4">
+                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">
+                            Description
+                        </label>
+                        <div class="col-sm-12 col-md-7">
+                            <input type="text" class="form-control" asp-for="Description" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group row mb-4">
+                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">
+                            IconURL
+                        </label>
+
+                        <div class="col-sm-12 col-md-7">
+                            <textarea class="form-control" asp-for="IconURL"></textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row mb-4">
+                        <label class="col-form-label col-12 col-md-3 col-lg-3"></label>
+
+                        <div class="col-sm-12 col-md-7">
+                            <button class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+

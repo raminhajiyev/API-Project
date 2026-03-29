@@ -1,0 +1,85 @@
+﻿@using WebApp.DTOs.TestimonialDTO
+@model UpdateTestimonialDTO
+@{
+    ViewData["Title"] = "UpdateTestimonial";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+
+            <div class="card-header">
+                <h4>Update Testimonial</h4>
+            </div>
+
+            <form method="post">
+                <input type="hidden" asp-for="TestimonialID" />
+
+                <div class="card-body">
+                    <input type="hidden" asp-for="TestimonialID" />
+
+                    <div class="form-group row mb-4">
+                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">
+                            Fullname
+                        </label>
+
+                        <div class="col-sm-12 col-md-7">
+                            <input type="text" class="form-control" asp-for="Fullname" />
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row mb-4">
+                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">
+                            Title
+                        </label>
+
+                        <div class="col-sm-12 col-md-7">
+                            <input type="text" class="form-control" asp-for="Title" />
+                        </div>
+                    </div>
+
+                    
+                    <div class="form-group row mb-4">
+                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">
+                            Comment
+                        </label>
+                        <div class="col-sm-12 col-md-7">
+                            <input type="text" class="form-control" asp-for="Comment" />
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group row mb-4">
+                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">
+                            ImageURL
+                        </label>
+
+                        <div class="col-sm-12 col-md-7">
+                            <textarea class="form-control" asp-for="ImageURL"></textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row mb-4">
+                        <label class="col-form-label col-12 col-md-3 col-lg-3"></label>
+
+                        <div class="col-sm-12 col-md-7">
+                            <button class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+
